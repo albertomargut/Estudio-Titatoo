@@ -1,4 +1,4 @@
-import { Column, Entity, OneToOne, JoinColumn, PrimaryGeneratedColumn, OneToMany } from "typeorm"
+import { Column, Entity, OneToOne, JoinColumn, PrimaryGeneratedColumn, OneToMany, ManyToOne } from "typeorm"
 import { User } from "./User"
 import { Appointment } from "./Appointment"
 
@@ -32,7 +32,7 @@ export class Client {
     nationality?: string;
 
     // 1:1 con User 
-    @OneToOne(() => User, (user) => user.client)
+    @ManyToOne(() => User, (user) => user.client)
     @JoinColumn({name: "user_id"})
     user!: User;
 

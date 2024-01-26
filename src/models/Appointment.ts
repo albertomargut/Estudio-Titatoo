@@ -33,7 +33,7 @@ export class Appointment {
      // N:1 con Artist 
      @ManyToOne(() => Artist, (artist) => artist.appointment)
      @JoinColumn ({name: "artist_id"})
-     artist?: Artist;
+     artist!: Artist;
 
 
  }

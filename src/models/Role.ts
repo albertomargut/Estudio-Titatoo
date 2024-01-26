@@ -11,16 +11,16 @@ id!: number
 @Column()
 name!: string
 
-// N:N con User
+// // N:N con User
 @ManyToMany(() => User, (user) => user.roles)
 @JoinTable({
    name: "users_roles",
    joinColumn: {
-      name: "user_id",
+      name: "role_id",
       referencedColumnName: "id",
    },
    inverseJoinColumn: {
-      name: "role_id",
+      name: "user_id",
       referencedColumnName: "id",
    },
 })

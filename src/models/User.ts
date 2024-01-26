@@ -20,7 +20,7 @@ export class User {
     @Column({unique : true})
     email!: string;
 
-  // N:N con Role
+//   // N:N con Role
    @ManyToMany(() => Role, (role) => role.users)
    @JoinTable({
       name: "users_roles",
