@@ -22,7 +22,7 @@ export class AppointmentController implements Controller {
           select: {
             id: true,
             user_id: true,
-            tattoo_artist_id: true,
+            artist_id: true,
             appointment_date: true,
             
           },
