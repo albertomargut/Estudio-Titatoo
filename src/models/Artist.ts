@@ -7,7 +7,7 @@ import { Appointment } from "./Appointment";
 @Entity("artists")
 export class Artist {
   @PrimaryGeneratedColumn()
-  id!: number;
+  id?: number;
 
   @Column()
   first_name!: string;
@@ -31,7 +31,7 @@ export class Artist {
 
   // 1:N con Appointment
   @OneToMany(() => Appointment, (appointment) => appointment.artist)
-  appointment!: Appointment;
+  appointment?: Appointment;
 
 
 }
