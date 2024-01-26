@@ -21,7 +21,7 @@ export class AppointmentController implements Controller {
           take: itemsPerPage,
           select: {
             id: true,
-            user_id: true,
+            client_id: true,
             artist_id: true,
             appointment_date: true,
             
@@ -45,7 +45,7 @@ export class AppointmentController implements Controller {
       const id = +req.params.id;
       const appointmentRepository = AppDataSource.getRepository(Appointment);
       const appointments = await appointmentRepository.findBy({
-        user_id: id,
+        client_id: id,
       });
 
       if (!appointments) {
@@ -97,7 +97,7 @@ export class AppointmentController implements Controller {
       const newAppointment = await appointmentRepository.save(data);
       res.status(201).json({
         newAppointment,
-        message: "Appointment create successfully"});
+        message: "Appointment created successfully"});
     } catch (error: any) {
       console.error("Error while creating Appointment:", error);
       res.status(500).json({

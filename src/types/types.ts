@@ -23,7 +23,8 @@ export interface CreateClientRequestBody {
 
 export interface CreateAppointmentsRequestBody {
    user_id: number;
-   date: Date;
+   artist_id: number;
+   appointment_date: Date;
    time: string;
 
 }
