@@ -39,6 +39,17 @@ export class CreateClients1705350232840 implements MigrationInterface {
                   length: "50",
                 },
                 {
+                  name: "email",
+                  type: "varchar",
+                  length: "255",
+                  isUnique: true,
+                },
+                {
+                  name: "password",
+                  type: "varchar",
+                  length: "200",
+                },
+                {
                   name: "nationality",
                   type: "varchar",
                   length: "255",

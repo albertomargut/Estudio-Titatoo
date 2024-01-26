@@ -33,6 +33,17 @@ export class CreateArtists1705350249551 implements MigrationInterface {
                   length: "50",
                 },
                 {
+                  name: "email",
+                  type: "varchar",
+                  length: "255",
+                  isUnique: true,
+               },
+               {
+                name: "password",
+                type: "varchar",
+                length: "200",
+             },
+                {
                   name: "phone_number",
                   type: "varchar",
                   length: "50",
