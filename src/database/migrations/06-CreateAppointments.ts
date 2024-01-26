@@ -47,20 +47,20 @@ export class CreateAppointments1705350282513 implements MigrationInterface {
               isNullable: true,
             },
               ],
-              // foreignKeys: [
-              //   {
-              //     columnNames: ["client_id"],
-              //     referencedTableName: "clients",
-              //     referencedColumnNames: ["id"],
-              //     //onDelete: "CASCADE"
-              //   },
-              //   {
-              //     columnNames: ["artist_id"],
-              //     referencedTableName: "artists",
-              //     referencedColumnNames: ["id"],
-              //     //onDelete: "CASCADE"
-              //   },
-             // ],
+              foreignKeys: [
+                {
+                  columnNames: ["client_id"],
+                  referencedTableName: "clients",
+                  referencedColumnNames: ["id"],
+                  //onDelete: "CASCADE"
+                },
+                {
+                  columnNames: ["artist_id"],
+                  referencedTableName: "artists",
+                  referencedColumnNames: ["id"],
+                  //onDelete: "CASCADE"
+                },
+             ],
             }),
             true
           );
