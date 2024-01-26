@@ -8,6 +8,8 @@ import { BaseFactory } from "./BaseFactory";
 export class UserFactory extends BaseFactory<User> {
   protected generateSpecifics(user: User): User {
     user.username = faker.internet.userName();
+    user.first_name = faker.person.firstName();
+    user.last_name = faker.person.lastName();
     user.password_hash = bcrypt.hashSync("12345678", 10);
     user.email = faker.internet.email({
       allowSpecialCharacters: true,

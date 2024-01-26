@@ -15,6 +15,12 @@ export class User {
     username!: string;
 
     @Column()
+    first_name!: string
+
+    @Column()
+    last_name!: string
+
+    @Column()
     password_hash!: string;
 
     @Column({unique : true})
@@ -37,11 +43,11 @@ export class User {
    
      // 1:1 con Clients 
    @OneToOne(() => Client, (client) => client.user)
-   client?: Client;
+   client!: Client;
 
     // 1:1 con Artists 
     @OneToOne(() => Artist, (artist) => artist.user)
-    artist?: Artist;
+    artist!: Artist;
  }
   
 

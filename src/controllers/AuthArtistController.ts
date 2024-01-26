@@ -7,7 +7,7 @@ import { AppDataSource } from "../database/data-source";
 import { StatusCodes } from "http-status-codes";
 import jwt from "jsonwebtoken";
 import { Artist } from "../models/Artist";
-
+import { Client } from "../models/Client";
 // -----------------------------------------------------------------------------
 
 export class AuthArtistController {
@@ -24,9 +24,13 @@ export class AuthArtistController {
          // Crear nuevo usuario
          const newUserArtist: User = {
             username,
+            first_name,
+            last_name,
             email,
             password_hash: bcrypt.hashSync(password, 10),
             roles: [UserRoles.ARTIST],
+            client: new Client,
+            artist: new Artist
          };
          await userRepository.save(newUserArtist);
 

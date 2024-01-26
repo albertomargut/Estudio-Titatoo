@@ -1,4 +1,4 @@
-# ESTUDIO DE TATUAJES API REST
+# ESTUDIO DE TATUAJES TITATOO -- MI API REST
 
 <details>
   <summary>Contenido 📝</summary>
@@ -23,7 +23,7 @@
 Este proyecto requería una API funcional conectada a una base de datos con al menos una relación de uno a muchos y una relación de muchos a muchos.
 
 ## Sobre el proyecto
-Consiste en crear una aplicación web para un estudio de tatuajes, que nos permitirá registrarnos, ver y crear citas para tatuarnos con diferentes tatuadores y realizar diferentes consultas a la base de datos. Actualmente son funcionales los seeders de Roles y de Users asignando un rol para poder hacer peticiones basicas sin tener que registrar usuarios. Como peticiones tambien podremos registrar usuarios, bien clientes o artistas. Podremos eliminar usuarios por su identificador, consultar perfil de usuario por identificador y consultar todos los usuarios.
+Consiste en crear una aplicación web para un estudio de tatuajes, que nos permitirá registrarnos, ver y crear citas para tatuarnos con diferentes tatuadores y realizar diferentes consultas a la base de datos. Actualmente son funcionales los seeders de Roles y de Users asignando un rol para poder hacer peticiones basicas sin tener que registrar usuarios. Como peticiones tambien podremos registrar usuarios, bien clientes o artistas (tatuadores). Podremos eliminar usuarios por su id, consultar perfil de usuario por id y consultar todos los usuarios.
 
 
 ## Stack
@@ -51,53 +51,91 @@ Tecnologías utilizadas:
 <details>
 <summary>Endpoints</summary>
 
-- AUTH
-    - REGISTER CLIENT
+ - REGISTER CLIENT
 
-            POST http://localhost:3000/api/auth/registerClient
+            POST http://localhost:3000/auth/registerClient
         body:
         ``` js
             {
-                "username": "David",
-                "email": "david@david.com",
-                "password": "princes"
+                "username": "pruebaCliente",
+                "first_name": "Cliente",
+                "last_name":"Perez",
+                "email": "cliente.demo@example.com",
+                "password": "12345678",
+                "phone_number": "646557606"
             }
         ```
-     - REGISTER ARTIST
 
-            POST http://localhost:3000/api/auth/registerArtist
+    - LOGIN
+
+            POST http://localhost:3000/auth/loginClient 
         body:
         ``` js
             {
-                "username": "Roberto",
-                "email": "roberto@roberto.com",
-                "password": "princes1234"
+                
+                "email": "Carol63@gmail.com",
+                "password": "12345678"
+
             }
-    
+        ```
+    - USER PROFILE
 
-    <!-- - LOGIN
+            GET http://localhost:3000/api/users/1 (id)  
+       
+    - UPDATE PROFILE
 
-            POST http://localhost:3000/api/login  
+            PATCH http://localhost:3000/api/users/2
+        body:
+        ``` js
+             {
+                "username" : "cambionuevoreynaldo52.munoz",
+                "first_name": "cambioreynaldo",
+                "last_name": "munoz",
+                "email" : "cambionuevoreynaldo52@example.com",
+                "password": "123456"
+            }
+        ```
+    - APPOINTMENT CREATION
+
+            POST http://localhost:3000/appointments/ 
         body:
         ``` js
             {
-                "user": "David",
-                "email": "david@david.com",
-                "password": "princes"
-            } -->
+                
+                  "user_id": 1,
+                  "tattoo_artist_id": 1,
+                  "appointment_date": "2024-04-17 10:30:00"
+
+            }
         ```
-- USUARIOS
-    - RECUPERAR TODOS USUARIOS 
+        
+    - APPOINTMENT UPDATE
 
-            GET http://localhost:3000/api/users 
-    
-    - RECUPERAR USUARIOS POR ID
+            PATCH http://localhost:3000/appointments/1
+        body:
+        ``` js
+            {
+                
+                  "user_id": 1,
+                  "tattoo_artist_id": 2,
+                  "appointment_date": "2024-04-21 10:30:00"
 
-             GET http://localhost:3000/api/users/:id 
+            }
+        ```
+     - APPOINTMENT DELETE
 
-    - ELIMINAR USUARIOS POR ID
+            DELETE http://localhost:3000/appointments/1
 
-            DELETE http://localhost:3000/api/users/:id
+     - APPOINTMENT FOR USERS
+
+            GET http://localhost:3000/appointments/users/1 
+
+     - APPOINTMENT FOR TATTOO_ARTIST
+
+            GET http://localhost:3000/appointments/artists/1 
+
+
+
 
 
 </details>
