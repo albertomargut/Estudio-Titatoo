@@ -1,56 +1,16 @@
 import { Request, Response } from "express";
-import {CreateClientRequestBody, CreateArtistRequestBody, LoginUserRequestBody, TokenData} from "../types/types";
+import {CreateArtistRequestBody, LoginUserRequestBody, TokenData} from "../types/types";
 import { User } from "../models/User";
 import bcrypt from "bcrypt";
 import { UserRoles } from "../constants/UserRoles";
 import { AppDataSource } from "../database/data-source";
-import { Client } from "../models/Client";
 import { StatusCodes } from "http-status-codes";
 import jwt from "jsonwebtoken";
 import { Artist } from "../models/Artist";
 
 // -----------------------------------------------------------------------------
 
-export class AuthController {
-   async registerClient(
-      req: Request<{}, {}, CreateClientRequestBody>,
-      res: Response
-   ): Promise<void | Response<any>> {
-      const { username, password, email, first_name, last_name, phone_number } = req.body;
-
-      const userRepository = AppDataSource.getRepository(User);
-      const clientRepository = AppDataSource.getRepository(Client);
-      
-
-      try {
-         // Crear nuevo usuario
-         const newUserClient: User = { 
-            username,
-            email,
-            password_hash: bcrypt.hashSync(password, 10),
-            roles: [UserRoles.CLIENT],
-         };
-         await userRepository.save(newUserClient);
-
-         // Crear un cliente
-         const newClient: Client = {
-            user: newUserClient,
-            first_name,
-            last_name,
-            phone_number
-         };
-         await clientRepository.save(newClient);
-
-         res.status(StatusCodes.CREATED).json({
-            message: "Client created successfully",
-         });
-      } catch (error) {
-         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-            message: "Error while creating client",
-         });
-      }
-   }
-
+export class AuthArtistController {
    async registerArtist(
       req: Request<{}, {}, CreateArtistRequestBody>,
       res: Response
