@@ -17,6 +17,12 @@ export class Client {
     last_name!: string
 
     @Column()
+    email!: string;
+  
+    @Column()
+    password!: string;
+
+    @Column()
     phone_number!: string
  
     @Column()

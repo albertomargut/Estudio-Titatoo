@@ -37,6 +37,8 @@ export class AuthClientController {
             user: newUserClient,
             first_name,
             last_name,
+            email,
+            password: bcrypt.hashSync(password,10),
             phone_number
          };
          await clientRepository.save(newClient);
