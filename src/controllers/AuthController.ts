@@ -25,7 +25,7 @@ export class AuthController {
 
       const userRepository = AppDataSource.getRepository(User);
       const clientRepository = AppDataSource.getRepository(Client);
-      const artistRepository = AppDataSource.getRepository(Artist);
+      
 
       try {
          // Crear nuevo usuario
@@ -42,7 +42,7 @@ export class AuthController {
             user: newUserClient,
             first_name,
             last_name,
-            phone_number,
+            phone_number
          };
          await clientRepository.save(newClient);
 
@@ -63,7 +63,7 @@ export class AuthController {
       const { username, password, email, first_name, last_name, phone_number } = req.body;
 
       const userRepository = AppDataSource.getRepository(User);
-      const clientRepository = AppDataSource.getRepository(Client);
+      const artistRepository = AppDataSource.getRepository(Artist);
 
       try {
          // Crear nuevo usuario
@@ -80,9 +80,9 @@ export class AuthController {
             user: newUserArtist,
             first_name,
             last_name,
-            phone_number,
+            phone_number
          };
-         await clientRepository.save(newArtist);
+         await artistRepository.save(newArtist);
 
          res.status(StatusCodes.CREATED).json({
             message: "Artist created successfully",

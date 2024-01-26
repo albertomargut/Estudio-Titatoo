@@ -41,7 +41,7 @@ export class CreateArtists1705350249551 implements MigrationInterface {
                   name: "tattoo_style",
                   type: "enum",
                   enum: ["Old school", "Japanese", "Traditional",  "Tribal", "Blackwork "],
-                  isNullable: true,
+                  isNullable: true
                 },
                 {
                   name: "work_experience",
