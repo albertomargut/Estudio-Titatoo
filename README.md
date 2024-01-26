@@ -36,7 +36,7 @@ Tecnologías utilizadas:
  - TYPEORM
 
 ## Diagrama BD
-!['imagen-db']
+!['imagen-db'](../estudio-tatuajes-Titatoo/diagram/diagram.png)
 
 ## Instalación en local
 1. Clonar el repositorio
