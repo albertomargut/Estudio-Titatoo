@@ -142,7 +142,7 @@ Para conseguir mi objetivo he recopilado información de:
 ``` js
  const developer = "Alberto";
 
- console.log("Desarrollado por: " + developer);
+ console.log("Desarrollado por: Alberto Martín" + developer);
 ```  
 
 ## Agradecimientos:
@@ -153,7 +153,11 @@ Agradezco a mis compañeros y profesor por el tiempo dedicado a este proyecto, e
 
 - **Xavi** 
 
-- **Hector**    
+- **Hector**  
+
+- **Reynaldo**  
+
+- **Antonio**  
 
 Así como al resto de profesores de GeeksHubs Academy por acompañarnos dia a dia en el proceso.
 
