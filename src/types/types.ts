@@ -33,8 +33,11 @@ export interface CreateAppointmentsRequestBody {
     password: string;
  }
  
- export interface TokenData {
-    userId: string;
-    userRoles: string[];
-
+ export interface ClientTokenData {
+   user_id: string;
+  
+ }
+ export interface ArtistTokenData {
+   artist_id: string;
+  
  }

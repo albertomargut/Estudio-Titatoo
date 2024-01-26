@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import {CreateArtistRequestBody, LoginUserRequestBody, TokenData} from "../types/types";
+import {CreateArtistRequestBody, LoginUserRequestBody, ArtistTokenData} from "../types/types";
 import { User } from "../models/User";
 import bcrypt from "bcrypt";
 import { UserRoles } from "../constants/UserRoles";
@@ -104,9 +104,8 @@ export class AuthArtistController {
 
          const roles = user.roles.map((role) => role.name);
 
-         const tokenPayload: TokenData = {
-            userId: user.id?.toString() as string,
-            userRoles: roles,
+         const tokenPayload: ArtistTokenData = {
+            artist_id: user.id?.toString() as string,
          };
 
          const token = jwt.sign(tokenPayload, "123", {
