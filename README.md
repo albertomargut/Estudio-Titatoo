@@ -129,7 +129,7 @@ Puedes hacerlo de dos maneras:
     - Abre una solicitud de Pull Request
 
 ## Licencia
-Este proyecto se encuentra bajo licencia de "Hector"
+Este proyecto se encuentra bajo licencia de "Alberto"
 
 ## Webgrafia:
 Para conseguir mi objetivo he recopilado información de:
