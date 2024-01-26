@@ -11,7 +11,7 @@ import jwt from "jsonwebtoken";
 
 // -----------------------------------------------------------------------------
 
-export class AuthController {
+export class AuthClientController {
    async registerClient(
       req: Request<{}, {}, CreateClientRequestBody>,
       res: Response
