@@ -161,9 +161,8 @@ Tecnologías utilizadas:
 </details>
 
 ## Futuras funcionalidades
-[ ] Desarrollo de un SuperAdmin
-[ ] Creación de citas con diseños
-[ ] ...
+[X] Desarrollo de un SuperAdmin
+[X] Creación de citas con diseños
 
 ## Contribuciones
 Las sugerencias y aportaciones son siempre bienvenidas.  
