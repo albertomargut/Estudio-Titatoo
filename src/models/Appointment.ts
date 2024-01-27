@@ -25,12 +25,12 @@ export class Appointment {
     @Column()
     tattoo_style?: "Old school" | "Japanese" | "Traditional" |  "Tribal" | "Blackwork";
 
-    // N:1 con Client 
+    
     @ManyToOne(() => Client, (client) => client.appointment)
     @JoinColumn({name: "client_id"})
     client!: Client;
 
-     // N:1 con Artist 
+     
      @ManyToOne(() => Artist, (artist) => artist.appointment)
      @JoinColumn ({name: "artist_id"})
      artist!: Artist;

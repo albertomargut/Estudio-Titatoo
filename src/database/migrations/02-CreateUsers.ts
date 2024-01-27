@@ -18,10 +18,6 @@ export class CreateUsers1705350206779 implements MigrationInterface {
                   isGenerated: true,
                   generationStrategy: "increment",
                 },
-               // {
-                  // name: "role",
-                  // type: "int",
-                //},
                 {
                   name: "username",
                   type: "varchar",
@@ -50,14 +46,7 @@ export class CreateUsers1705350206779 implements MigrationInterface {
                   isUnique: true,
                 },
               ],
-              // foreignKeys: [
-              //   {
-              //     columnNames: ["role"],
-              //     referencedTableName: "roles",
-              //     referencedColumnNames: ["id"],
-              //     onDelete: "CASCADE"
-              //   },
-              // ],
+          
             }),
             true
           );

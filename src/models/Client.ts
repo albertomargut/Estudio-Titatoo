@@ -31,13 +31,12 @@ export class Client {
     @Column()
     nationality?: string;
 
-    // 1:1 con User 
+   
     @OneToOne(() => User, (user) => user.client)
     @JoinColumn({name: "user_id"})
     user!: User;
 
 
-     // 1:N con Appointment 
      @OneToMany(() => Appointment, (appointment) => appointment.client)
      appointment?: Appointment;
 

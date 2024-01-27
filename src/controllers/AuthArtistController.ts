@@ -21,7 +21,7 @@ export class AuthArtistController {
       const artistRepository = AppDataSource.getRepository(Artist);
 
       try {
-         // Crear nuevo usuario
+         
          const newUserArtist: User = {
             username,
             first_name,
@@ -34,7 +34,7 @@ export class AuthArtistController {
          };
          await userRepository.save(newUserArtist);
 
-         // Crear un artist
+         
          const newArtist: Artist = {
             user: newUserArtist,
             first_name,
@@ -64,14 +64,14 @@ export class AuthArtistController {
       const userRepository = AppDataSource.getRepository(User);
 
       try {
-         // Validar existencia de email y contraseña
+         
          if (!email || !password) {
             return res.status(StatusCodes.BAD_REQUEST).json({
                message: "Email or password is required",
             });
          }
 
-         // Encontrar un usuario por email
+         
          const user = await userRepository.findOne({
             where: {
                email: email,
@@ -86,27 +86,27 @@ export class AuthArtistController {
             },
          });
 
-         // Verificar usuario inexistente
+         
          if (!user) {
             return res.status(StatusCodes.BAD_REQUEST).json({
                message: "Bad email or password",
             });
          }
 
-         // Verificar contraseña si el usuario existe
+         
          const isPasswordValid = bcrypt.compareSync(
             password,
             user.password_hash
          );
 
-         // Verificar contraseña valida
+        
          if (!isPasswordValid) {
             return res.status(StatusCodes.BAD_REQUEST).json({
                message: "Bad email or password",
             });
          }
 
-         // Generar token
+         
 
          const roles = user.roles.map((role) => role.name);
 

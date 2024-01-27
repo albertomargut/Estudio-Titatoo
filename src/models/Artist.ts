@@ -30,12 +30,12 @@ export class Artist {
   @Column()
   work_experience?: number;
 
-  // 1:1 con User
+  
   @OneToOne(() => User, (user) => user.artist)
   @JoinColumn({ name: "user_id" })
   user!: User;
 
-  // 1:N con Appointment
+  
   @OneToMany(() => Appointment, (appointment) => appointment.artist)
   appointment?: Appointment;
 

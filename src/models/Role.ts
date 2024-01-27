@@ -11,7 +11,6 @@ id!: number
 @Column()
 name!: string
 
-// // N:N con User
 @ManyToMany(() => User, (user) => user.roles)
 @JoinTable({
    name: "users_roles",

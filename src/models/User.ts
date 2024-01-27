@@ -26,7 +26,7 @@ export class User {
     @Column({unique : true})
     email!: string;
 
-//   // N:N con Role
+
    @ManyToMany(() => Role, (role) => role.users)
    @JoinTable({
       name: "users_roles",
@@ -41,11 +41,11 @@ export class User {
    })
    roles!: Role[];
    
-     // 1:1 con Clients 
+   
    @OneToOne(() => Client, (client) => client.user)
    client!: Client;
 
-    // 1:1 con Artists 
+  
     @OneToOne(() => Artist, (artist) => artist.user)
     artist!: Artist;
  }
