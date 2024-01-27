@@ -161,8 +161,8 @@ Tecnologías utilizadas:
 </details>
 
 ## Futuras funcionalidades
-[ ] LOGIN de usuarios
-[ ] Creacion de citas 
+[ ] Desarrollo de un SuperAdmin
+[ ] Creación de citas con diseños
 [ ] ...
 
 ## Contribuciones
@@ -187,13 +187,13 @@ Puedes hacerlo de dos maneras:
     - Abre una solicitud de Pull Request
 
 ## Licencia
-Este proyecto se encuentra bajo licencia de "Alberto"
+Este proyecto se encuentra bajo licencia de "Alberto Martín"
 
 ## Webgrafia:
 Para conseguir mi objetivo he recopilado información de:
 - Documentacion propia del curso GeeksHubs junto con las sesiones grabadas.
 - Documentacion propia de TypeOrm
-- ...
+- https://www.npmjs.com/package//typeorm
 
 ## Desarrollo:
 
@@ -217,7 +217,7 @@ Agradezco a mis compañeros y profesor por el tiempo dedicado a este proyecto, e
 
 - **Antonio**  
 
-Así como al resto de profesores de GeeksHubs Academy por acompañarnos dia a dia en el proceso.
+Así como al resto de profesores de GeeksHubs Academy por acompañarnos día a día en el proceso.
 
 ## Contacto
 <a href = "alberto.martinguti@gmail.com"><img src="https://img.shields.io/badge/Gmail-C6362C?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
