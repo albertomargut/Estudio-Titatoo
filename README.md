@@ -57,18 +57,37 @@ Tecnologías utilizadas:
         body:
         ``` js
             {
-                "username": "pruebaCliente",
-                "first_name": "Cliente",
+                "username": "pruebaClient",
+                "first_name": "Client",
                 "last_name":"Perez",
-                "email": "cliente.demo@example.com",
+                "email": "client.demo@example.com",
                 "password": "12345678",
                 "phone_number": "646557606"
             }
         ```
 
-    - LOGIN
+        - REGISTER ARTIST
+
+            POST http://localhost:3000/auth/registerArtist
+        body:
+        ``` js
+            {
+                "username": "pruebaArtist",
+                "first_name": "Artist",
+                "last_name":"Perez",
+                "email": "artist.demo@example.com",
+                "password": "12345678",
+                "phone_number": "646557606",
+                "tatoo_style": "Old school", 
+                "work_experience": "2"
+            }
+
+//Hay 5 opciones de tattoo_style (Old school, Japanese,  Blackwork, Tribal y Traditional)
+
+    - LOGIN CLIENTE / LOGIN ARTIST
 
             POST http://localhost:3000/auth/loginClient 
+            POST http://localhost:3000/auth/loginArtist
         body:
         ``` js
             {
@@ -78,11 +97,11 @@ Tecnologías utilizadas:
 
             }
         ```
-    - USER PROFILE
+    - USER PROFILE (ARTIST Y CLIENT)
 
             GET http://localhost:3000/api/users/1 (id)  
        
-    - UPDATE PROFILE
+    - UPDATE PROFILE (ARTIST Y CLIENT)
 
             PATCH http://localhost:3000/api/users/2
         body:
@@ -115,24 +134,25 @@ Tecnologías utilizadas:
         body:
         ``` js
             {
-                
-                  "user_id": 1,
-                  "tattoo_artist_id": 2,
-                  "appointment_date": "2024-04-21 10:30:00"
 
+                "id": 1,
+                "client_id": 5,
+                "artist_id": 9,
+                "appointment_date": "2024-02-18 20:30:00"
+            
             }
         ```
      - APPOINTMENT DELETE
 
-            DELETE http://localhost:3000/appointments/1
+            DELETE http://localhost:3000/appointments/1 (id)
 
      - APPOINTMENT FOR USERS
 
-            GET http://localhost:3000/appointments/users/1 
+            GET http://localhost:3000/appointments/users/1 (client_id)
 
      - APPOINTMENT FOR TATTOO_ARTIST
 
-            GET http://localhost:3000/appointments/artists/1 
+            GET http://localhost:3000/appointments/artists/1 (artist_id)
 
 
 
