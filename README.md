@@ -99,11 +99,13 @@ Tecnologías utilizadas:
             POST http://localhost:3000/appointments/ 
         body:
         ``` js
-            {
-                
-                  "client_id": 1,
-                  "appointment_date": "2024-02-18 20:30:00"
+             {
 
+                "id": 1,
+                "client_id": 5,
+                "artist_id": 9,
+                "appointment_date": "2024-02-18 20:30:00"
+            
             }
         ```
         

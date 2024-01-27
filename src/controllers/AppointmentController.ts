@@ -123,4 +123,20 @@ export class AppointmentController implements Controller {
        });
     }
  }
+ async delete(req: Request, res: Response): Promise<void | Response<any>> {
+  try {
+     const id = +req.params.id;
+
+     const appointmentRepository = AppDataSource.getRepository(Appointment);
+     await appointmentRepository.delete(id);
+
+     res.status(200).json({
+        message: "Appointment deleted successfully",
+     });
+  } catch (error) {
+     res.status(500).json({
+        message: "Error while deleting appointment",
+     });
+  }
+}
 }
