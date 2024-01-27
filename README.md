@@ -87,12 +87,11 @@ Tecnologías utilizadas:
             PATCH http://localhost:3000/api/users/2
         body:
         ``` js
-             {
-                "username" : "cambionuevoreynaldo52.munoz",
-                "first_name": "cambioreynaldo",
-                "last_name": "munoz",
-                "email" : "cambionuevoreynaldo52@example.com",
-                "password": "123456"
+            {
+                "username" : "alberto.martin",
+                "first_name": "Alberto",
+                "last_name": "Martin",
+                "email" : "alberto.nuevo@example.com"
             }
         ```
     - APPOINTMENT CREATION
@@ -102,9 +101,8 @@ Tecnologías utilizadas:
         ``` js
             {
                 
-                  "user_id": 1,
-                  "tattoo_artist_id": 1,
-                  "appointment_date": "2024-04-17 10:30:00"
+                  "client_id": 1,
+                  "appointment_date": "2024-02-18 20:30:00"
 
             }
         ```

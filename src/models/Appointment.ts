@@ -13,8 +13,8 @@ export class Appointment {
     @Column()
     client_id!: number;
   
-    @Column({ nullable: true})
-    artist_id?: number;
+    @Column()
+    artist_id!: number;
 
     @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
     appointment_date!: Date;

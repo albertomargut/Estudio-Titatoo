@@ -32,7 +32,7 @@ export class Client {
     nationality?: string;
 
     // 1:1 con User 
-    @ManyToOne(() => User, (user) => user.client)
+    @OneToOne(() => User, (user) => user.client)
     @JoinColumn({name: "user_id"})
     user!: User;
 
