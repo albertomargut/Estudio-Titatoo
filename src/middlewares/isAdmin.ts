@@ -10,7 +10,7 @@ export const isAdmin = (req: any, res: Response, next: NextFunction) => {
 
    if (!roles.includes("admin")) {
       return res.status(StatusCodes.FORBIDDEN).json({
-         message: "You are not allowed to access this resource",
+         message: "Access denied",
       });
    }
 

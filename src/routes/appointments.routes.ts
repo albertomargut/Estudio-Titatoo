@@ -1,17 +1,20 @@
 import express from "express";
 import { AppointmentController } from "../controllers/AppointmentController";
-
+import { auth } from "../middlewares/auth";
+import { isArtist } from "../middlewares/isArtist";
+import { isClient } from "../middlewares/isClient";
 // -----------------------------------------------------------------------------
 
 const router = express.Router();
 const appointmentController = new AppointmentController();
 
-router.get("/", appointmentController.getAll)
-router.post("/", appointmentController.create)
-router.patch("/:id", appointmentController.update);
-router.delete("/:id", appointmentController.delete);
-router.get("/users/:id", appointmentController.getById)
-router.get("/artists/:id", appointmentController.getByArtist)
+router.get("/Appointments", auth, isClient, isArtist, appointmentController.getAll)
+router.get("/clientsAppointments/:id", auth, isClient, appointmentController.getById)
+router.get("/artistsAppontments/:id", auth, isArtist, appointmentController.getByArtist)
+router.post("/NewAppointment", auth, isClient, isArtist, appointmentController.create)
+router.patch("/UpdateAppointment/:id", auth, isClient, isArtist, appointmentController.update);
+router.delete("/DeleteAppointment/:id", auth, isClient, isArtist, appointmentController.delete);
+
 
 
 export default router;
