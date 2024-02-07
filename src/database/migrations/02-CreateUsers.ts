@@ -24,16 +24,16 @@ export class CreateUsers1705350206779 implements MigrationInterface {
                   length: "50",
                   isUnique: true,
                 },
-                {
-                  name: "first_name",
-                  type: "varchar",
-                  length: "50",
-                },
-                {
-                  name: "last_name",
-                  type: "varchar",
-                  length: "50",
-                },
+                // {
+                //   name: "first_name",
+                //   type: "varchar",
+                //   length: "50",
+                // },
+                // {
+                //   name: "last_name",
+                //   type: "varchar",
+                //   length: "50",
+                // },
                 {
                   name: "password_hash",
                   type: "varchar",
@@ -46,7 +46,7 @@ export class CreateUsers1705350206779 implements MigrationInterface {
                   isUnique: true,
                 },
               ],
-          
+              
             }),
             true
           );

@@ -41,3 +41,8 @@ export interface CreateAppointmentsRequestBody {
    artist_id: string;
   
  }
+
+ export interface TokenData {
+  userId: string;
+  userRoles: string[];
+}

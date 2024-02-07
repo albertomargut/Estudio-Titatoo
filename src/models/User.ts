@@ -14,11 +14,11 @@ export class User {
     @Column({unique : true})
     username!: string;
 
-    @Column()
-    first_name!: string
+   //  @Column()
+   //  first_name!: string
 
-    @Column()
-    last_name!: string
+   //  @Column()
+   //  last_name!: string
 
     @Column()
     password_hash!: string;
@@ -26,7 +26,9 @@ export class User {
     @Column({unique : true})
     email!: string;
 
-
+   //  @ManyToOne(() => Role, (role) => role.users)
+   //  @JoinColumn ({name: "role_id"})
+   //  roles!: Role[];
    @ManyToMany(() => Role, (role) => role.users)
    @JoinTable({
       name: "users_roles",
@@ -43,11 +45,11 @@ export class User {
    
    
    @OneToOne(() => Client, (client) => client.user)
-   client!: Client;
+   client?: Client;
 
   
     @OneToOne(() => Artist, (artist) => artist.user)
-    artist!: Artist;
+    artist?: Artist;
  }
   
 

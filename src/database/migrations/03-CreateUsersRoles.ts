@@ -20,7 +20,18 @@ export class CreateUsersRoles1705350214568 implements MigrationInterface {
                     isPrimary: true,
                  },
               ],
-        
+              foreignKeys: [
+               {
+                  columnNames: ["user_id"],
+                  referencedTableName: "users",
+                  referencedColumnNames: ["id"],
+               },
+               {
+                  columnNames: ["role_id"],
+                  referencedTableName: "roles",
+                  referencedColumnNames: ["id"],
+               },
+            ],
            }),
            true
         );

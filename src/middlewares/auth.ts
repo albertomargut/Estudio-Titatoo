@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import jwt, { JwtPayload, decode } from "jsonwebtoken";
+import { TokenData } from "../types/types";
 
 
 // -----------------------------------------------------------------------------
@@ -22,6 +23,12 @@ export const auth = (req: Request, res: Response, next: NextFunction) => {
 
       console.log(decoded);
 
+      const decodedPayload: TokenData = {
+         userId: decoded.userId,
+         userRoles: decoded.userRoles,
+      };
+
+      req.tokenData = decodedPayload;
 
       next();
    } catch (error) {

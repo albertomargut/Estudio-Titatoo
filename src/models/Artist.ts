@@ -1,4 +1,4 @@
-import {Column, Entity, OneToOne, OneToMany, JoinColumn, PrimaryGeneratedColumn} from "typeorm";
+import { Column, Entity, OneToOne, OneToMany, JoinColumn, PrimaryGeneratedColumn} from "typeorm";
 import { User } from "./User";
 import { Appointment } from "./Appointment";
 
@@ -15,11 +15,11 @@ export class Artist {
   @Column()
   last_name!: string;
 
-  @Column()
-  email!: string;
+  // @Column()
+  // email!: string;
 
-  @Column()
-  password!: string;
+  // @Column()
+  // password!: string;
 
   @Column()
   phone_number!: string;

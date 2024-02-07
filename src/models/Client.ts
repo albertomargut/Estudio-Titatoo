@@ -1,4 +1,4 @@
-import { Column, Entity, OneToOne, JoinColumn, PrimaryGeneratedColumn, OneToMany, ManyToOne } from "typeorm"
+import { Column, Entity, OneToOne, JoinColumn, PrimaryGeneratedColumn, OneToMany } from "typeorm"
 import { User } from "./User"
 import { Appointment } from "./Appointment"
 
@@ -16,11 +16,11 @@ export class Client {
     @Column()
     last_name!: string
 
-    @Column()
-    email!: string;
+    // @Column()
+    // email!: string;
   
-    @Column()
-    password!: string;
+    // @Column()
+    // password!: string;
 
     @Column()
     phone_number!: string
