@@ -36,7 +36,7 @@ Tecnologías utilizadas:
  - TYPEORM
 
 ## Diagrama BD
-!['imagen-db'](./diagram/diagram.png)
+!['imagen-db'](./diagram/diagramTitatoo.png)
 
 ## Instalación en local
 1. Clonar el repositorio

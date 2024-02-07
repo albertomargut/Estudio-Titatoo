@@ -24,8 +24,7 @@ name!: string;
    },
 })
 users?: User[];
-// @OneToMany(() => User, (user) => user.roles)
-// users!: User[];
+
 
  
 

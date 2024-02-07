@@ -6,7 +6,7 @@ import { Artist } from "./Artist"
 // -----------------------------------------------------------------------------
 
 @Entity("users")
-// @TableInheritance({column: {type: "varchar", name: "type"}})
+
 export class User {
 
     @PrimaryGeneratedColumn()
@@ -31,9 +31,6 @@ export class User {
     @Column({unique : true})
     email!: string;
 
-   //  @ManyToOne(() => Role, (role) => role.users)
-   //  @JoinColumn ({name: "role_id"})
-   //  roles!: Role[];
    @ManyToMany(() => Role, (role) => role.users)
    @JoinTable({
       name: "users_roles",
