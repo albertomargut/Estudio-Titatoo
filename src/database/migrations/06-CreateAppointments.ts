@@ -21,12 +21,11 @@ export class CreateAppointments1705350282513 implements MigrationInterface {
                 {
                   name: "client_id",
                   type: "int",
-                  isUnique: true,
+                  isNullable: true,
                 },
                 {
                   name: "artist_id",
                   type: "int",
-                  isUnique: true,
                   isNullable: true,
                 },
                 {
@@ -52,13 +51,13 @@ export class CreateAppointments1705350282513 implements MigrationInterface {
                   columnNames: ["client_id"],
                   referencedTableName: "clients",
                   referencedColumnNames: ["id"],
-                  // onDelete: "CASCADE"
+                  onDelete: "CASCADE"
                 },
                 {
                   columnNames: ["artist_id"],
                   referencedTableName: "artists",
                   referencedColumnNames: ["id"],
-                  // onDelete: "CASCADE"
+                  onDelete: "CASCADE"
                 },
              ],
             }),

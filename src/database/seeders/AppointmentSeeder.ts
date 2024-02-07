@@ -2,7 +2,7 @@ import { AppDataSource } from "../data-source";
 import { AppointmentFactory } from "../factories/AppointmentFactory";
 import { Appointment } from "../../models/Appointment";
 import { seedClientsWithUser } from "./ClientSeeder";
-import { count } from "console";
+
 
 
 // -----------------------------------------------------------------------------

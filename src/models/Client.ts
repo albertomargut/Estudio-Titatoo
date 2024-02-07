@@ -32,7 +32,7 @@ export class Client {
 
 
      @OneToMany(() => Appointment, (appointment) => appointment.client)
-     appointment!: Appointment[];
+     appointment?: Appointment[];
 
 
  }

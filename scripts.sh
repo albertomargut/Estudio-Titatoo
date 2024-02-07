@@ -82,10 +82,9 @@ npx typeorm entity:create ./src/models/User
 npx typeorm migration:create ./src/database/migrations/CreateRoles
 npx typeorm migration:create ./src/database/migrations/CreateUsers
 npx typeorm migration:create ./src/database/migrations/CreateUsersRoles
-npx typeorm migration:create ./src/database/migrations/CreateStudents
-npx typeorm migration:create ./src/database/migrations/CreateTeachers
-npx typeorm migration:create ./src/database/migrations/CreateCourses
-npx typeorm migration:create ./src/database/migrations/CreateEnrollments
+npx typeorm migration:create ./src/database/migrations/CreateClients
+npx typeorm migration:create ./src/database/migrations/CreateArtists
+npx typeorm migration:create ./src/database/migrations/CreateAppointments
 
 # Ejecutar migraciones
 npx typeorm-ts-node-commonjs migration:run -d ./src/database/data-source.ts 
@@ -96,10 +95,10 @@ npx typeorm-ts-node-commonjs migration:revert -d ./src/database/data-source.ts
 # Crear modelos
 npx typeorm entity:create ./src/models/Role
 npx typeorm entity:create ./src/models/User
-npx typeorm entity:create ./src/models/Student
-npx typeorm entity:create ./src/models/Teacher
-npx typeorm entity:create ./src/models/Course
-npx typeorm entity:create ./src/models/Enrollment
+npx typeorm entity:create ./src/models/UserRoles
+npx typeorm entity:create ./src/models/Client
+npx typeorm entity:create ./src/models/Artist
+npx typeorm entity:create ./src/models/Appointment
 
 # Borrar base de datos
 npx typeorm-ts-node-commonjs schema:drop -d ./src/database/data-source.ts

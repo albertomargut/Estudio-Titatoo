@@ -111,7 +111,7 @@ export class AuthController {
         },
         select: {
           roles: {
-            role_name: true,
+            name: true,
           },
         },
       });

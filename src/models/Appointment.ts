@@ -28,12 +28,12 @@ export class Appointment {
     
     @ManyToOne(() => Client, (client) => client.appointment)
     @JoinColumn({name: "client_id", referencedColumnName: "id"})
-    client!: Client;
+    client?: Client;
 
      
      @ManyToOne(() => Artist, (artist) => artist.appointment)
      @JoinColumn ({name: "artist_id", referencedColumnName: "id"})
-     artist!: Artist;
+     artist?: Artist;
 
 
  }

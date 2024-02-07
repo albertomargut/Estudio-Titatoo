@@ -42,10 +42,10 @@ Tecnologías utilizadas:
 1. Clonar el repositorio
 2. ` $ npm install `
 3. Conectamos nuestro repositorio con la base de datos 
-4. ``` $ Ejecutamos las migraciones ``` 
-5. ``` $ Ejecutamos los seeders ``` 
-6. ``` $ npm run dev ``` 
-
+4. Ejecutamos las migraciones con el siguiente comando: '$ npm run db:migrate'
+5. Ejecutamos los seeders con el siguiente comando: '$ npm run db:seed'
+6. Conectamos el terminal con el servidor con el siguiente comando: '$ npm run dev'
+7. Para vaciar las tablas que tenemos para volver a generar las migraciones y los seeders, usamos el siguiente comando: '$ npm run db:refresh'
 
 ## Endpoints
 <details>
@@ -208,13 +208,17 @@ Agradezco a mis compañeros y profesor por el tiempo dedicado a este proyecto, e
 
 - **Fidel**
 
-- **Xavi** 
-
 - **Hector**  
 
 - **Reynaldo**  
 
 - **Antonio**  
+
+- **Gabriel**  
+
+- **Bartomeu**  
+
+- **Erika**  
 
 Así como al resto de profesores de GeeksHubs Academy por acompañarnos día a día en el proceso.
 

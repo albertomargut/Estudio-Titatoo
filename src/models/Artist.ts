@@ -37,7 +37,7 @@ export class Artist {
 
   
   @OneToMany(() => Appointment, (appointment) => appointment.artist)
-  appointment?: Appointment[];
+  appointment!: Appointment[];
 
 
 }
