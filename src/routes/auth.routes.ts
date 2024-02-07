@@ -8,8 +8,8 @@ const router = express.Router();
 const authController = new AuthController();
 
 
-router.post("/registerArtist", authController.registerArtist);
-router.post("/loginClient", authController.login);
+router.post("/register", authController.registerArtist);
+router.post("/login", authController.login);
 
 export default router;
 

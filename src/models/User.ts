@@ -1,4 +1,4 @@
-import { Column, Entity, OneToOne, ManyToMany, JoinTable, PrimaryGeneratedColumn } from "typeorm"
+import { Column, Entity, OneToOne, ManyToMany, JoinTable, PrimaryGeneratedColumn, TableInheritance } from "typeorm"
 import { Role } from "./Role" 
 import { Client } from "./Client"
 import { Artist } from "./Artist"
@@ -6,6 +6,7 @@ import { Artist } from "./Artist"
 // -----------------------------------------------------------------------------
 
 @Entity("users")
+// @TableInheritance({column: {type: "varchar", name: "type"}})
 export class User {
 
     @PrimaryGeneratedColumn()
@@ -14,11 +15,15 @@ export class User {
     @Column({unique : true})
     username!: string;
 
-   //  @Column()
-   //  first_name!: string
+    @Column()
+    first_name!: string
 
-   //  @Column()
-   //  last_name!: string
+    @Column()
+    last_name!: string
+
+    
+    @Column()
+    phone_number!: string
 
     @Column()
     password_hash!: string;

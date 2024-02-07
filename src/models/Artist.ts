@@ -1,19 +1,19 @@
-import { Column, Entity, OneToOne, OneToMany, JoinColumn, PrimaryGeneratedColumn} from "typeorm";
+import { BaseEntity, Column, Entity, OneToOne, OneToMany, JoinColumn, PrimaryGeneratedColumn, ChildEntity} from "typeorm";
 import { User } from "./User";
 import { Appointment } from "./Appointment";
 
 // -----------------------------------------------------------------------------
 
 @Entity("artists")
-export class Artist {
+export class Artist extends BaseEntity{
   @PrimaryGeneratedColumn()
   id?: number;
 
-  @Column()
-  first_name!: string;
+  // @Column()
+  // first_name!: string;
 
-  @Column()
-  last_name!: string;
+  // @Column()
+  // last_name!: string;
 
   // @Column()
   // email!: string;
@@ -21,8 +21,8 @@ export class Artist {
   // @Column()
   // password!: string;
 
-  @Column()
-  phone_number!: string;
+  // @Column()
+  // phone_number!: string;
 
   @Column()
   tattoo_style?: "Old school" | "Japanese" | "Traditional" |  "Tribal" | "Blackwork";

@@ -1,29 +1,23 @@
-import { Column, Entity, OneToOne, JoinColumn, PrimaryGeneratedColumn, OneToMany } from "typeorm"
+import { BaseEntity, Column, Entity, OneToOne, JoinColumn, PrimaryGeneratedColumn, OneToMany, ChildEntity } from "typeorm"
 import { User } from "./User"
 import { Appointment } from "./Appointment"
 
 // -----------------------------------------------------------------------------
 
 @Entity("clients")
-export class Client {
+export class Client extends BaseEntity{
 
     @PrimaryGeneratedColumn()
     id?: number
 
-    @Column()
-    first_name!: string
-
-    @Column()
-    last_name!: string
+    // @Column()
+    // first_name!: string
 
     // @Column()
-    // email!: string;
-  
-    // @Column()
-    // password!: string;
+    // last_name!: string
 
-    @Column()
-    phone_number!: string
+    // @Column()
+    // phone_number!: string
  
     @Column()
     gender?: string;

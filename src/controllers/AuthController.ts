@@ -37,8 +37,8 @@ export class AuthController {
           //Crear nuevo cliente y asociarlo con el usuario recien creado
             const newClient = clientRepository.create({
               user: newUser,
-              first_name,
-              phone_number,
+              // first_name,
+              // phone_number,
             });
             await clientRepository.save(newClient);
 
@@ -57,7 +57,7 @@ export class AuthController {
       req: Request<{}, {}, CreateArtistRequestBody>,
       res: Response
    ): Promise<void | Response<any>> {
-      const { username, password, email, first_name, phone_number, tattoo_style } = req.body;
+      const { username, password, email, first_name, phone_number } = req.body;
 
       const userRepository = AppDataSource.getRepository(User);
       const artistRepository = AppDataSource.getRepository(Artist);
@@ -76,8 +76,8 @@ export class AuthController {
            //Crear nuevo artista y asociarlo con el usuario recien creado
            const newArtist = artistRepository.create({
             user: newUser,
-            first_name,
-            phone_number,
+            // first_name,
+            // phone_number,
           });
           await artistRepository.save(newArtist);
 
