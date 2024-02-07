@@ -1,14 +1,14 @@
-import { BaseEntity, Column, Entity, OneToOne, JoinColumn, PrimaryGeneratedColumn, OneToMany, ChildEntity } from "typeorm"
+import { Column, Entity, OneToOne, JoinColumn, PrimaryGeneratedColumn, OneToMany, ChildEntity } from "typeorm"
 import { User } from "./User"
 import { Appointment } from "./Appointment"
 
 // -----------------------------------------------------------------------------
 
 @Entity("clients")
-export class Client extends BaseEntity{
+export class Client {
 
     @PrimaryGeneratedColumn()
-    id?: number
+    id!: number
 
     // @Column()
     // first_name!: string
@@ -32,7 +32,7 @@ export class Client extends BaseEntity{
 
 
      @OneToMany(() => Appointment, (appointment) => appointment.client)
-     appointment?: Appointment[];
+     appointment!: Appointment[];
 
 
  }

@@ -11,7 +11,7 @@ const userController = new UserController();
 router.get("/", auth, isAdmin, userController.getAll);
 router.get("/:id", auth, isAdmin, userController.getById);
 router.post("/", auth, isAdmin, userController.create);
-router.post("/", auth, isAdmin, userController.createArtist);
+router.post("/CreateArtist", auth, isAdmin, userController.createArtist);
 router.patch("/:id", auth, isAdmin, userController.update);
 router.delete("/:id", auth, isAdmin, userController.delete);
 

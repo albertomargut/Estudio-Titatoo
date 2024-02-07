@@ -13,11 +13,18 @@ export class CreateUsersRoles1705350214568 implements MigrationInterface {
                     name: "user_id",
                     type: "int",
                     isPrimary: true,
+                    isGenerated: true,
+                    generationStrategy: "increment",
                  },
                  {
                     name: "role_id",
                     type: "int",
                     isPrimary: true,
+                    isNullable:false,
+                    default: 1,
+                    
+
+                    
                  },
               ],
               foreignKeys: [
@@ -25,13 +32,15 @@ export class CreateUsersRoles1705350214568 implements MigrationInterface {
                   columnNames: ["user_id"],
                   referencedTableName: "users",
                   referencedColumnNames: ["id"],
+                  // onDelete: "CASCADE",
                },
-               {
+                {
                   columnNames: ["role_id"],
                   referencedTableName: "roles",
-                  referencedColumnNames: ["id"],
-               },
-            ],
+                  referencedColumnNames: ["roleid"],
+                  // onDelete: "CASCADE",
+                },
+               ],
            }),
            true
         );

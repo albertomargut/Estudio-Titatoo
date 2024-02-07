@@ -1,11 +1,11 @@
-import { BaseEntity, Column, Entity, ManyToOne, JoinColumn, PrimaryGeneratedColumn } from "typeorm"
+import { Column, Entity, ManyToOne, JoinColumn, PrimaryGeneratedColumn } from "typeorm"
 import { Client } from "./Client"
 import { Artist } from "./Artist"
 
 // -----------------------------------------------------------------------------
 
 @Entity("appointments")
-export class Appointment extends BaseEntity  {
+export class Appointment {
 
     @PrimaryGeneratedColumn()
     id!: number;
@@ -27,12 +27,12 @@ export class Appointment extends BaseEntity  {
 
     
     @ManyToOne(() => Client, (client) => client.appointment)
-    @JoinColumn({name: "client_id"})
+    @JoinColumn({name: "client_id", referencedColumnName: "id"})
     client!: Client;
 
      
      @ManyToOne(() => Artist, (artist) => artist.appointment)
-     @JoinColumn ({name: "artist_id"})
+     @JoinColumn ({name: "artist_id", referencedColumnName: "id"})
      artist!: Artist;
 
 

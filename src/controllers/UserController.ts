@@ -74,6 +74,20 @@ export class UserController implements Controller {
       }
    }
 
+   async createArtist (req: Request, res: Response): Promise<void | Response<any>> {
+      try {
+         const data = req.body;
+
+         const userRepository = AppDataSource.getRepository(User);
+         const newArtist = await userRepository.save(data);
+         res.status(201).json(newArtist);
+      } catch (error) {
+         res.status(500).json({
+            message: "Error while creating artist",
+         });
+      }
+   }
+
    async update(req: Request, res: Response): Promise<void | Response<any>> {
       try {
          const id = +req.params.id;

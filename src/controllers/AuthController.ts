@@ -13,8 +13,7 @@ import jwt from "jsonwebtoken";
 export class AuthController {
     
     async register(
-      //Proceso de registro de nuevo cliente 
-        req: Request<{}, {}, CreateArtistRequestBody | CreateClientRequestBody>,
+        req: Request<{}, {}, CreateClientRequestBody>,
         res: Response
      ): Promise<void | Response<any>> {
         const { username, password, email, first_name, phone_number } = req.body;
@@ -25,12 +24,6 @@ export class AuthController {
 
 
         try {
-          // if(req.body typeof CreateArtistRequestBody) {}
-            let role = UserRoles.CLIENT
-          const isArtist = (bd:any): bd is CreateArtistRequestBody => true;
-          if ( isArtist (req.body) ) 
-          {const { tattoo_style} = req.body;}
-           //Crear nuevo usuario
             const newUser = userRepository.create({
                 username,
                 email,
@@ -39,22 +32,10 @@ export class AuthController {
             });
             await userRepository.save(newUser);
             
-          //Crear nuevo cliente y asociarlo con el usuario recien creado
             const newClient = clientRepository.create({
               user: newUser,
-              // first_name,
-              // phone_number,
             });
             await clientRepository.save(newClient);
-
-            const artistRepository = AppDataSource.getRepository(Artist);
-
-            const newArtist = artistRepository.create({
-              user: newUser,
-              // first_name,
-              // phone_number,
-            });
-            await artistRepository.save(newArtist);
 
             res.status(201).json(newClient);
           } catch (error: any) {
@@ -67,43 +48,43 @@ export class AuthController {
 
     }
 
-    async registerArtist(
-      req: Request<{}, {}, CreateArtistRequestBody>,
-      res: Response
-   ): Promise<void | Response<any>> {
-      const { username, password, email, first_name, phone_number } = req.body;
+  //   async registerArtist(
+  //     req: Request<{}, {}, CreateArtistRequestBody>,
+  //     res: Response
+  //  ): Promise<void | Response<any>> {
+  //     const { username, password, email, first_name, phone_number } = req.body;
 
-      const userRepository = AppDataSource.getRepository(User);
-      const artistRepository = AppDataSource.getRepository(Artist);
+  //     const userRepository = AppDataSource.getRepository(User);
+  //     const artistRepository = AppDataSource.getRepository(Artist);
 
 
-      // try {
+  //     // try {
          
-      //     const newUser = userRepository.create({
-      //         username,
-      //         email,
-      //         password_hash: bcrypt.hashSync(password, 10),
-      //         roles: [UserRoles.ARTIST],
-      //     });
-      //     await userRepository.save(newUser);
+  //     //     const newUser = userRepository.create({
+  //     //         username,
+  //     //         email,
+  //     //         password_hash: bcrypt.hashSync(password, 10),
+  //     //         roles: [UserRoles.ARTIST],
+  //     //     });
+  //     //     await userRepository.save(newUser);
 
-      //      //Crear nuevo artista y asociarlo con el usuario recien creado
-      //      const newArtist = artistRepository.create({
-      //       user: newUser,
-      //       // first_name,
-      //       // phone_number,
-      //     });
-      //     await artistRepository.save(newArtist);
+  //     //      //Crear nuevo artista y asociarlo con el usuario recien creado
+  //     //      const newArtist = artistRepository.create({
+  //     //       user: newUser,
+  //     //       // first_name,
+  //     //       // phone_number,
+  //     //     });
+  //     //     await artistRepository.save(newArtist);
 
-      //     res.status(201).json(newArtist);
-      //   } catch (error: any) {
-      //     console.error("Error while creating user:", error);
-      //     res.status(500).json({
-      //       message: "Error while creating user",
-      //       error: error.message,
-      //     });
-      //   }
-  }
+  //     //     res.status(201).json(newArtist);
+  //     //   } catch (error: any) {
+  //     //     console.error("Error while creating user:", error);
+  //     //     res.status(500).json({
+  //     //       message: "Error while creating user",
+  //     //       error: error.message,
+  //     //     });
+  //     //   }
+  
 
   async login(
     req: Request<{}, {}, LoginUserRequestBody>,
@@ -130,7 +111,7 @@ export class AuthController {
         },
         select: {
           roles: {
-            name: true,
+            role_name: true,
           },
         },
       });
@@ -178,75 +159,75 @@ export class AuthController {
     }
   }
 
-  async update(req: Request, res: Response): Promise<void | Response<any>> {
-    try {
-      const id = +req.params.id;
-      const data = req.body;
+  // async update(req: Request, res: Response): Promise<void | Response<any>> {
+  //   try {
+  //     const id = +req.params.id;
+  //     const data = req.body;
 
-      const userRepository = AppDataSource.getRepository(User);
-      await userRepository.update({ id: id }, data);
+  //     const userRepository = AppDataSource.getRepository(User);
+  //     await userRepository.update({ id: id }, data);
 
-      res.status(202).json({
-        message: "User updated successfully",
-      });
-    } catch (error) {
-      res.status(500).json({
-        message: "Error while updating user",
-      });
-    }
-  }
+  //     res.status(202).json({
+  //       message: "User updated successfully",
+  //     });
+  //   } catch (error) {
+  //     res.status(500).json({
+  //       message: "Error while updating user",
+  //     });
+  //   }
+  // }
 
-  async getAllArtist(req: Request, res: Response): Promise<void | Response<any>> {
-    try {
-      const artistRepository = AppDataSource.getRepository(Artist);
-      const allArtists = await artistRepository.find();
-      res.status(200).json(allArtists);
-    } catch (error) {
-      res.status(500).json({
-        message: "Error while getting users",
-      });
-    }
-  }
+  // async getAllArtist(req: Request, res: Response): Promise<void | Response<any>> {
+  //   try {
+  //     const artistRepository = AppDataSource.getRepository(Artist);
+  //     const allArtists = await artistRepository.find();
+  //     res.status(200).json(allArtists);
+  //   } catch (error) {
+  //     res.status(500).json({
+  //       message: "Error while getting users",
+  //     });
+  //   }
+  // }
 
-  async getArtistUser(req: Request, res: Response): Promise<void | Response<any>> {
-    try {
+  // async getArtistUser(req: Request, res: Response): Promise<void | Response<any>> {
+  //   try {
 
-      const id = +req.params.id;
+  //     const id = +req.params.id;
 
-      const artistRepository = AppDataSource.getRepository(Artist);
+  //     const artistRepository = AppDataSource.getRepository(Artist);
       
-      const artist = await artistRepository.findOneBy({
-        id: id,
+  //     const artist = await artistRepository.findOneBy({
+  //       id: id,
 
-      });
+  //     });
 
-      if (!artist) {
-        return res.status(404).json({
-          message: "User not found",
-        });
-      }
+  //     if (!artist) {
+  //       return res.status(404).json({
+  //         message: "User not found",
+  //       });
+  //     }
 
-      const artistUser = Number(artist.user);
-      const userRepository = AppDataSource.getRepository(User);
-      const user = await userRepository.findOneBy({
-        id: artistUser
+  //     const artistUser = Number(artist.user);
+  //     const userRepository = AppDataSource.getRepository(User);
+  //     const user = await userRepository.findOneBy({
+  //       id: artistUser
 
-      });
-       // operador spread "..." desempaqueta las claves del objeto
-      const response = {
-        ...artist,
-        ...user,
-      }
-      //Reasigno el valor de response.id puesto que se pisa su valor con el método spread.
-      response.id = artist.id
+  //     });
+  //      // operador spread "..." desempaqueta las claves del objeto
+  //     const response = {
+  //       ...artist,
+  //       ...user,
+  //     }
+  //     //Reasigno el valor de response.id puesto que se pisa su valor con el método spread.
+  //     response.id = artist.id
 
-      res.status(200).json(response);
-    } catch (error) {
-      res.status(500).json({
-        message: "Error while getting user",
-      });
-    }
-  }
+  //     res.status(200).json(response);
+  //   } catch (error) {
+  //     res.status(500).json({
+  //       message: "Error while getting user",
+  //     });
+  //   }
+  // }
 
  
 
