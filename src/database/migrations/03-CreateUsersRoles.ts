@@ -1,8 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import { UserRoles } from "../../constants/UserRoles";
+import { Role } from "../../models/Role";
 
 // -----------------------------------------------------------------------------
 
 export class CreateUsersRoles1705350214568 implements MigrationInterface {
+
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
@@ -21,9 +24,11 @@ export class CreateUsersRoles1705350214568 implements MigrationInterface {
                     type: "int",
                     isPrimary: true,
                     isNullable:false,
-                    default: 1,
+                  //   isGenerated: true,
+                    generationStrategy: "increment",
+                    default: (1)
                     
-
+                    
                     
                  },
               ],
