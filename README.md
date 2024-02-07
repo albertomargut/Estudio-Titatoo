@@ -45,7 +45,7 @@ Tecnologías utilizadas:
 4. ``` $ Ejecutamos las migraciones ``` 
 5. ``` $ Ejecutamos los seeders ``` 
 6. ``` $ npm run dev ``` 
-7. ...
+
 
 ## Endpoints
 <details>

@@ -12,9 +12,9 @@ import jwt from "jsonwebtoken";
 
 export class AuthController {
     
-    async registerClient(
+    async register(
       //Proceso de registro de nuevo cliente 
-        req: Request<{}, {}, CreateClientRequestBody>,
+        req: Request<{}, {}, CreateArtistRequestBody | CreateClientRequestBody>,
         res: Response
      ): Promise<void | Response<any>> {
         const { username, password, email, first_name, phone_number } = req.body;
@@ -25,7 +25,12 @@ export class AuthController {
 
 
         try {
-           //Crear neuvo usuario
+          // if(req.body typeof CreateArtistRequestBody) {}
+            let role = UserRoles.CLIENT
+          const isArtist = (bd:any): bd is CreateArtistRequestBody => true;
+          if ( isArtist (req.body) ) 
+          {const { tattoo_style} = req.body;}
+           //Crear nuevo usuario
             const newUser = userRepository.create({
                 username,
                 email,
@@ -41,6 +46,15 @@ export class AuthController {
               // phone_number,
             });
             await clientRepository.save(newClient);
+
+            const artistRepository = AppDataSource.getRepository(Artist);
+
+            const newArtist = artistRepository.create({
+              user: newUser,
+              // first_name,
+              // phone_number,
+            });
+            await artistRepository.save(newArtist);
 
             res.status(201).json(newClient);
           } catch (error: any) {
@@ -63,32 +77,32 @@ export class AuthController {
       const artistRepository = AppDataSource.getRepository(Artist);
 
 
-      try {
+      // try {
          
-          const newUser = userRepository.create({
-              username,
-              email,
-              password_hash: bcrypt.hashSync(password, 10),
-              roles: [UserRoles.ARTIST],
-          });
-          await userRepository.save(newUser);
+      //     const newUser = userRepository.create({
+      //         username,
+      //         email,
+      //         password_hash: bcrypt.hashSync(password, 10),
+      //         roles: [UserRoles.ARTIST],
+      //     });
+      //     await userRepository.save(newUser);
 
-           //Crear nuevo artista y asociarlo con el usuario recien creado
-           const newArtist = artistRepository.create({
-            user: newUser,
-            // first_name,
-            // phone_number,
-          });
-          await artistRepository.save(newArtist);
+      //      //Crear nuevo artista y asociarlo con el usuario recien creado
+      //      const newArtist = artistRepository.create({
+      //       user: newUser,
+      //       // first_name,
+      //       // phone_number,
+      //     });
+      //     await artistRepository.save(newArtist);
 
-          res.status(201).json(newArtist);
-        } catch (error: any) {
-          console.error("Error while creating user:", error);
-          res.status(500).json({
-            message: "Error while creating user",
-            error: error.message,
-          });
-        }
+      //     res.status(201).json(newArtist);
+      //   } catch (error: any) {
+      //     console.error("Error while creating user:", error);
+      //     res.status(500).json({
+      //       message: "Error while creating user",
+      //       error: error.message,
+      //     });
+      //   }
   }
 
   async login(

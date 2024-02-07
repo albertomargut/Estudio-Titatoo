@@ -18,7 +18,7 @@ export interface CreateClientRequestBody {
   first_name: string;
   last_name: string;
   phone_number: string;
-  tattoo_style?: string;
+  tattoo_style: string;
 }
 
 export interface CreateAppointmentsRequestBody {

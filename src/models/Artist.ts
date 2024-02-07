@@ -37,7 +37,7 @@ export class Artist extends BaseEntity{
 
   
   @OneToMany(() => Appointment, (appointment) => appointment.artist)
-  appointment?: Appointment;
+  appointment?: Appointment[];
 
 
 }

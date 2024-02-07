@@ -32,7 +32,7 @@ export class Client extends BaseEntity{
 
 
      @OneToMany(() => Appointment, (appointment) => appointment.client)
-     appointment?: Appointment;
+     appointment?: Appointment[];
 
 
  }

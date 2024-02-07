@@ -8,12 +8,12 @@ import { isClient } from "../middlewares/isClient";
 const router = express.Router();
 const appointmentController = new AppointmentController();
 
-router.get("/Appointments", auth, isClient, isArtist, appointmentController.getAll)
+router.get("/Appointments", auth, appointmentController.getAll)
 router.get("/clientsAppointments/:id", auth, isClient, appointmentController.getById)
 router.get("/artistsAppontments/:id", auth, isArtist, appointmentController.getByArtist)
-router.post("/NewAppointment", auth, isClient, isArtist, appointmentController.create)
-router.patch("/UpdateAppointment/:id", auth, isClient, isArtist, appointmentController.update);
-router.delete("/DeleteAppointment/:id", auth, isClient, isArtist, appointmentController.delete);
+router.post("/NewAppointment", auth, isClient, appointmentController.create)
+router.patch("/UpdateAppointment/:id", auth, isClient, appointmentController.update);
+router.delete("/DeleteAppointment/:id", auth, isClient, appointmentController.delete);
 
 
 
