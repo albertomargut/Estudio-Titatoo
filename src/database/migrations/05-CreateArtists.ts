@@ -22,32 +22,6 @@ export class CreateArtists1705350249551 implements MigrationInterface {
                   type: "int",
                   isUnique: true,
                 },
-              //   {
-              //     name: "first_name",
-              //     type: "varchar",
-              //     length: "50",
-              //   },
-              //   {
-              //     name: "last_name",
-              //     type: "varchar",
-              //     length: "50",
-              //   },
-              //   {
-              //     name: "email",
-              //     type: "varchar",
-              //     length: "255",
-              //     isUnique: true,
-              //  },
-            //    {
-            //     name: "password",
-            //     type: "varchar",
-            //     length: "200",
-            //  },
-                // {
-                //   name: "phone_number",
-                //   type: "varchar",
-                //   length: "50",
-                // },
                 {
                   name: "tattoo_style",
                   type: "enum",

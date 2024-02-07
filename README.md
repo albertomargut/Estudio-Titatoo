@@ -51,24 +51,37 @@ Tecnologías utilizadas:
 <details>
 <summary>Endpoints</summary>
 
- - REGISTER CLIENT
+- REGISTER
 
-            POST http://localhost:3000/auth/registerClient
+            POST http://localhost:3000/auth/register
         body:
         ``` js
             {
-                "username": "pruebaClient",
-                "first_name": "Client",
-                "last_name":"Perez",
-                "email": "client.demo@example.com",
+                "username": "pruebaCliente6",
+                "first_name": "Cliente6",
+                "last_name":"Pérez5",
+                "email": "cliente6.demo@example.com",
                 "password": "12345678",
                 "phone_number": "646557606"
             }
         ```
+- CREATE USER
 
-        - REGISTER ARTIST
+            POST http://localhost:3000/api/users/
+        body:
+        ``` js
+            {
+                "username": "pruebaCliente6",
+                "first_name": "Cliente6",
+                "last_name":"Pérez5",
+                "email": "cliente6.demo@example.com",
+                "password": "12345678",
+                "phone_number": "646557606"
+            }
+        ```
+ - CREATE ARTIST
 
-            POST http://localhost:3000/auth/registerArtist
+            POST http://localhost:3000/api/users/CreateArtist
         body:
         ``` js
             {
@@ -84,24 +97,24 @@ Tecnologías utilizadas:
 
 //Hay 5 opciones de tattoo_style (Old school, Japanese,  Blackwork, Tribal y Traditional)
 
-    - LOGIN CLIENTE / LOGIN ARTIST
+- LOGIN
 
-            POST http://localhost:3000/auth/loginClient 
-            POST http://localhost:3000/auth/loginArtist
+            POST http://localhost:3000/auth/login
+            
         body:
         ``` js
             {
                 
-                "email": "Carol63@gmail.com",
+                "email": "cliente6.demo@example.com",
                 "password": "12345678"
 
             }
         ```
-    - USER PROFILE (ARTIST Y CLIENT)
+- USER PROFILE (ARTIST Y CLIENT)
 
             GET http://localhost:3000/api/users/1 (id)  
        
-    - UPDATE PROFILE (ARTIST Y CLIENT)
+- UPDATE PROFILE (ARTIST Y CLIENT)
 
             PATCH http://localhost:3000/api/users/2
         body:
@@ -113,9 +126,21 @@ Tecnologías utilizadas:
                 "email" : "alberto.nuevo@example.com"
             }
         ```
-    - APPOINTMENT CREATION
+- DELETE PROFILE (ARTIST Y CLIENT)
 
-            POST http://localhost:3000/appointments/ 
+            DELETE http://localhost:3000/api/users/2
+        body:
+        ``` js
+            {
+                "username" : "alberto.martin",
+                "first_name": "Alberto",
+                "last_name": "Martin",
+                "email" : "alberto.nuevo@example.com"
+            }
+        ```    
+- APPOINTMENT CREATION
+
+            POST http://localhost:3000/appointments/NewAppointment 
         body:
         ``` js
              {
@@ -128,9 +153,9 @@ Tecnologías utilizadas:
             }
         ```
         
-    - APPOINTMENT UPDATE
+- APPOINTMENT UPDATE
 
-            PATCH http://localhost:3000/appointments/1
+            PATCH http://localhost:3000/appointments/UpdateAppointment/1
         body:
         ``` js
             {
@@ -142,17 +167,17 @@ Tecnologías utilizadas:
             
             }
         ```
-     - APPOINTMENT DELETE
+- APPOINTMENT DELETE
 
-            DELETE http://localhost:3000/appointments/1 (id)
+            DELETE http://localhost:3000/appointments/DeleteAppointment/1 (id)
 
-     - APPOINTMENT FOR USERS
+- APPOINTMENT FOR USERS
 
-            GET http://localhost:3000/appointments/users/1 (client_id)
+            GET http://localhost:3000/appointments/clientsAppointments/1 (client_id)
 
-     - APPOINTMENT FOR TATTOO_ARTIST
+- APPOINTMENT FOR TATTOO_ARTIST
 
-            GET http://localhost:3000/appointments/artists/1 (artist_id)
+            GET http://localhost:3000/appointments/artistsAppointments/1 (artist_id)
 
 
 

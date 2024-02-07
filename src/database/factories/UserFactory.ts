@@ -14,10 +14,6 @@ export class UserFactory extends BaseFactory<User> {
     });
     user.first_name = faker.person.firstName();
     user.last_name = faker.person.lastName();
-   //    artist.password = bcrypt.hashSync("12345678", 10);
-   //    artist.email = faker.internet.email({
-   //    allowSpecialCharacters: true,
-   //  });
     user.phone_number = faker.phone.number();
     
     return user;
