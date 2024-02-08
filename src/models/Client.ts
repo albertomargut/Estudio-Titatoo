@@ -8,7 +8,7 @@ import { Appointment } from "./Appointment"
 export class Client {
 
     @PrimaryGeneratedColumn()
-    id!: number
+    id?: number
  
     @Column()
     gender?: string;
