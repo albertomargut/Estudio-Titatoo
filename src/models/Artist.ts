@@ -9,6 +9,7 @@ export class Artist {
   @PrimaryGeneratedColumn()
   id?: number;
 
+
   @Column()
   tattoo_style?: "Old school" | "Japanese" | "Traditional" |  "Tribal" | "Blackwork";
 

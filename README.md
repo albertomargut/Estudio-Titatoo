@@ -75,7 +75,7 @@ Tecnologías utilizadas:
                 "first_name": "Cliente6",
                 "last_name":"Pérez5",
                 "email": "cliente6.demo@example.com",
-                "password": "12345678",
+                "password_hash": "12345678",
                 "phone_number": "646557606"
             }
         ```
@@ -110,13 +110,17 @@ Tecnologías utilizadas:
 
             }
         ```
-- USER PROFILE (ARTIST Y CLIENT)
+- USER PROFILE
 
-            GET http://localhost:3000/api/users/1 (id)  
+            GET http://localhost:3000/api/users/24 
+
+- ALL USERS PROFILES
+
+            GET http://localhost:3000/api/users?page=1&skip=20              
        
 - UPDATE PROFILE (ARTIST Y CLIENT)
 
-            PATCH http://localhost:3000/api/users/2
+            PATCH http://localhost:3000/api/users/24 (id)
         body:
         ``` js
             {

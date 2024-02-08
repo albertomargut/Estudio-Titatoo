@@ -1,6 +1,7 @@
 import { Controller } from "./Controller";
 import { Request, Response } from "express";
 import { User } from "../models/User";
+import { Artist } from "../models/Artist";
 import { AppDataSource } from "../database/data-source";
 
 // -----------------------------------------------------------------------------
@@ -69,7 +70,7 @@ export class UserController implements Controller {
          res.status(201).json(newUser);
       } catch (error) {
          res.status(500).json({
-            message: "Error while creating user",
+            message: "Error while creating user", error
          });
       }
    }
@@ -78,12 +79,12 @@ export class UserController implements Controller {
       try {
          const data = req.body;
 
-         const userRepository = AppDataSource.getRepository(User);
+         const userRepository = AppDataSource.getRepository(Artist);
          const newArtist = await userRepository.save(data);
          res.status(201).json(newArtist);
       } catch (error) {
          res.status(500).json({
-            message: "Error while creating artist",
+            message: "Error while creating artist", error
          });
       }
    }
