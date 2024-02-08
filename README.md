@@ -149,10 +149,8 @@ Tecnologías utilizadas:
         ``` js
              {
 
-                "id": 1,
                 "client_id": 5,
-                "artist_id": 9,
-                "appointment_date": "2024-02-18 20:30:00"
+                "appointment_date": "2024-02-18 20:30:00" 
             
             }
         ```
@@ -177,11 +175,11 @@ Tecnologías utilizadas:
 
 - APPOINTMENT FOR USERS
 
-            GET http://localhost:3000/appointments/clientsAppointments/1 (client_id)
+            GET http://localhost:3000/appointments/1 (client_id)
 
 - APPOINTMENT FOR TATTOO_ARTIST
 
-            GET http://localhost:3000/appointments/artistsAppointments/1 (artist_id)
+            GET http://localhost:3000/appointments/artists/1 (artist_id)
 
 
 
