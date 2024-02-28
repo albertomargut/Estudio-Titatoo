@@ -113,6 +113,7 @@ export class AuthController {
       res.status(StatusCodes.OK).json({
         message: "Login successfully",
         token,
+        user
       });
     } catch (error) {
       res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({

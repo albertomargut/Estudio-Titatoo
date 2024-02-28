@@ -145,16 +145,11 @@ export class UserController implements Controller {
           // where: {
           //   email: email,
           // },
-          // relations: {
-          //   roles: true,
-          // },
-          select: {
-            user: {
-              first_name: true,
-              last_name: true
+          relations: {
+            user: true,
             },
           },
-        });
+        );
         console.log("julian", allArtists);
          res.status(200).json(allArtists);
       } catch (error) {
