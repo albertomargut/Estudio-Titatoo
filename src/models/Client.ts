@@ -9,6 +9,9 @@ export class Client {
 
     @PrimaryGeneratedColumn()
     id?: number
+
+    @Column()
+    user_id!: number;
  
     @Column()
     gender?: string;

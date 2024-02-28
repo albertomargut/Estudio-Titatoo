@@ -6,8 +6,8 @@ import { CreateAppointmentsRequestBody } from "../types/types";
 
 //----------------------------------------------------------------------
 
-export class AppointmentController implements Controller {
-  async getAll(req: Request, res: Response): Promise<void | Response<any>> {
+export class AppointmentController {
+  async getAllAppointmentsPerPage(req: Request, res: Response): Promise<void | Response<any>> {
     try {
         const AppointmentRepository = AppDataSource.getRepository(Appointment);
   

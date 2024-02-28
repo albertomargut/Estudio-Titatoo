@@ -14,7 +14,9 @@ export class AuthController {
         req: Request<{}, {}, CreateClientRequestBody>,
         res: Response
      ): Promise<void | Response<any>> {
+      console.log(req.body);
         const { username, password, email, first_name, last_name, phone_number } = req.body;
+      
 
 
         const userRepository = AppDataSource.getRepository(User);
