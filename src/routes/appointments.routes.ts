@@ -8,7 +8,7 @@ import { isClient } from "../middlewares/isClient";
 const router = express.Router();
 const appointmentController = new AppointmentController();
 
-router.get("/AllAppointmentsPerPage", auth, appointmentController.getAllAppointmentsPerPage)
+router.get("/AllAppointments", auth, appointmentController.getAllAppointments)
 router.get("/myAppointments/:id", auth, isClient, appointmentController.getById)
 router.get("/myAppointmentsArtists/:id", auth, isArtist, appointmentController.getByArtist)
 router.post("/NewAppointment", auth, isClient, appointmentController.create)

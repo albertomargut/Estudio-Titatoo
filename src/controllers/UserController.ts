@@ -37,6 +37,7 @@ export class UserController implements Controller {
                username: true,
                email: true,
                id: true,
+               password_hash: false,
             },
          });
          res.status(200).json({
@@ -147,7 +148,9 @@ export class UserController implements Controller {
           // },
           relations: {
             user: true,
+            
             },
+    
           },
         );
         console.log("julian", allArtists);

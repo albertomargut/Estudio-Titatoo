@@ -7,7 +7,7 @@ import { Appointment } from "./Appointment";
 @Entity("artists")
 export class Artist {
   @PrimaryGeneratedColumn()
-  id?: number;
+  id!: number;
 
   @Column()
   user_id!: number;

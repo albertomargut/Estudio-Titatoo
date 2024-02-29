@@ -1,45 +1,52 @@
 import { Request, Response } from "express";
 import { Appointment } from "../models/Appointment";
 import { AppDataSource } from "../database/data-source";
-import { Controller } from "./Controller";
 import { CreateAppointmentsRequestBody } from "../types/types";
 
 //----------------------------------------------------------------------
 
 export class AppointmentController {
-  async getAllAppointmentsPerPage(req: Request, res: Response): Promise<void | Response<any>> {
+  async getAllAppointments(req: Request, res: Response): Promise<void | Response<any>> {
     try {
-        const AppointmentRepository = AppDataSource.getRepository(Appointment);
-  
-        let { page, skip } = req.query;
-  
-        let currentPage = page ? +page : 1;
-        let itemsPerPage = skip ? +skip : 10;
-  
-        const [allAppointments, count] = await AppointmentRepository.findAndCount({
-          skip: (currentPage - 1) * itemsPerPage,
-          take: itemsPerPage,
-          select: {
-            id: true,
-            client_id: true,
-            artist_id: true,
-            appointment_date: true,
-            
-          },
-        });
-        res.status(200).json({
-          count,
-          skip: itemsPerPage,
-          page: currentPage,
-          results: allAppointments,
-        });
-      } catch (error) {
-        res.status(500).json({
-          message: "Error while getting appointments",
-        });
-      }
+      const AppointmentRepository = AppDataSource.getRepository(Appointment);
+
+      let { page, skip } = req.query;
+
+      let currentPage = page ? +page : 1;
+      let itemsPerPage = skip ? +skip : 10;
+
+      const [allAppointments, count] = await AppointmentRepository.findAndCount({
+        skip: (currentPage - 1) * itemsPerPage,
+        take: itemsPerPage,
+        relations: {
+          client: true,
+          artist: true,
+        },
+        select: {
+          //  id: true,
+          //  appointment_date: true,
+          //  shift: true,
+          date: true,
+          time:true,
+          client_id: true,
+          artist_id: true,
+          id: true,
+
+        },
+      });
+      res.status(200).json({
+        count,
+        skip: itemsPerPage,
+        page: currentPage,
+        results: allAppointments,
+      });
+    } catch (error) {
+      res.status(500).json({
+        message: "Error while getting appointments",
+      });
     }
-  
+  }
+
   async getById(req: Request, res: Response): Promise<void | Response<any>> {
     try {
       const id = +req.params.id;
@@ -97,7 +104,8 @@ export class AppointmentController {
       const newAppointment = await appointmentRepository.save(data);
       res.status(201).json({
         newAppointment,
-        message: "Appointment created successfully"});
+        message: "Appointment created successfully"
+      });
     } catch (error: any) {
       console.error("Error while creating Appointment:", error);
       res.status(500).json({
@@ -108,35 +116,35 @@ export class AppointmentController {
   }
   async update(req: Request, res: Response): Promise<void | Response<any>> {
     try {
-       const id = +req.params.id;
-       const data = req.body;
+      const id = +req.params.id;
+      const data = req.body;
 
-       const appointmentRepository = AppDataSource.getRepository(Appointment);
-       await appointmentRepository.update({ id: id }, data);
+      const appointmentRepository = AppDataSource.getRepository(Appointment);
+      await appointmentRepository.update({ id: id }, data);
 
-       res.status(202).json({
-          message: "Appointment updated successfully",
-       });
+      res.status(202).json({
+        message: "Appointment updated successfully",
+      });
     } catch (error) {
-       res.status(500).json({
-          message: "Error while updating appointment",
-       });
+      res.status(500).json({
+        message: "Error while updating appointment",
+      });
     }
- }
- async delete(req: Request, res: Response): Promise<void | Response<any>> {
-  try {
-     const id = +req.params.id;
-
-     const appointmentRepository = AppDataSource.getRepository(Appointment);
-     await appointmentRepository.delete(id);
-
-     res.status(200).json({
-        message: "Appointment deleted successfully",
-     });
-  } catch (error) {
-     res.status(500).json({
-        message: "Error while deleting appointment",
-     });
   }
-}
+  async delete(req: Request, res: Response): Promise<void | Response<any>> {
+    try {
+      const id = +req.params.id;
+
+      const appointmentRepository = AppDataSource.getRepository(Appointment);
+      await appointmentRepository.delete(id);
+
+      res.status(200).json({
+        message: "Appointment deleted successfully",
+      });
+    } catch (error) {
+      res.status(500).json({
+        message: "Error while deleting appointment",
+      });
+    }
+  }
 }

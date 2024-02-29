@@ -18,7 +18,7 @@ export const appointmentSeeder = async () => {
       const appointmentFactory = new AppointmentFactory(appointmentRepository);
 
       
-      const clientsCount = 100;
+      const clientsCount = 0; //he puesto 0 para iniciar sin citas
 
    
       const clients = await seedClientsWithUser(clientsCount);

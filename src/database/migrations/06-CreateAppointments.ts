@@ -21,7 +21,7 @@ export class CreateAppointments1705350282513 implements MigrationInterface {
                 {
                   name: "client_id",
                   type: "int",
-                  isUnique: true,
+                  
                 },
                 {
                   name: "artist_id",
@@ -29,23 +29,43 @@ export class CreateAppointments1705350282513 implements MigrationInterface {
                   isNullable: true,
                 },
                 {
-                  name: "appointment_date",
-                  type: "varchar",
-                  length: "50",
-                  isNullable: true,
+                  name: "date",
+                  type: "date",
+                  
                 },
+                {
+                  name: "time",
+                  type: "time",
+                },
+                {
+                  name: "created_at",
+                  type: "timestamp",
+                  default: "CURRENT_TIMESTAMP",
+                },
+                {
+                  name: "updated_at",
+                  type: "timestamp",
+                  default: "CURRENT_TIMESTAMP",
+                  onUpdate: "CURRENT_TIMESTAMP",
+                },
+              //   {
+              //     name: "shift",
+              //     type: "enum",
+              //     enum: ["morning", "afternoon"],
+              //     isNullable: true,
+              // },
           
-              {
-                name: "status",
-                type: "enum",
-                enum: ["scheduled", "canceled"],
-             },
-             {
-              name: "tattoo_style",
-              type: "enum",
-              enum: ["Old school", "Japanese", "Traditional",  "Tribal", "Blackwork "],
-              isNullable: true,
-            },
+              // {
+              //   name: "status",
+              //   type: "enum",
+              //   enum: ["scheduled", "canceled"],
+            //  },
+            //  {
+            //   name: "tattoo_style",
+            //   type: "enum",
+            //   enum: ["Old school", "Japanese", "Traditional",  "Tribal", "Blackwork "],
+            //   isNullable: true,
+            // },
               ],
               foreignKeys: [
                 {
@@ -60,6 +80,8 @@ export class CreateAppointments1705350282513 implements MigrationInterface {
                   referencedColumnNames: ["id"],
                   onDelete: "CASCADE"
                 },
+                
+                
              ],
             }),
             true
