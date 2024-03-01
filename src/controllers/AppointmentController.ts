@@ -78,6 +78,7 @@ export class AppointmentController {
       const appointmentRepository = AppDataSource.getRepository(Appointment);
       const appointments = await appointmentRepository.findBy({
         artist_id: id,
+        
       });
 
       if (!appointments) {

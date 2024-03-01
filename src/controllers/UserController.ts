@@ -13,6 +13,7 @@ export class UserController implements Controller {
       try {
         const userRepository = AppDataSource.getRepository(User);
         const allUsers = await userRepository.find();
+        
         res.status(200).json(allUsers);
       } catch (error) {
         res.status(500).json({
@@ -153,7 +154,7 @@ export class UserController implements Controller {
     
           },
         );
-        console.log("julian", allArtists);
+      
          res.status(200).json(allArtists);
       } catch (error) {
          res.status(500).json({

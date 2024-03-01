@@ -47,12 +47,14 @@ export class User {
    
    
    @OneToOne(() => Client, (client) => client.user)
-   client?: Client;
+   client!: Client;
 
   
     @OneToOne(() => Artist, (artist) => artist.user)
-    artist?: Artist;
+    artist!: Artist;
+ 
  }
+
   
 
  
