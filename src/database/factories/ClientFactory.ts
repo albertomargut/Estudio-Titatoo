@@ -2,6 +2,7 @@ import { faker } from "@faker-js/faker";
 import { Client } from "../../models/Client";
 import { BaseFactory } from "./BaseFactory";
 
+
 // -----------------------------------------------------------------------------
 
 export class ClientFactory extends BaseFactory<Client> {

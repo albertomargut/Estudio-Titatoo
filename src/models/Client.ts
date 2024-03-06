@@ -5,6 +5,7 @@ import { Appointment } from "./Appointment"
 // -----------------------------------------------------------------------------
 
 @Entity("clients")
+
 export class Client {
 
     @PrimaryGeneratedColumn()
@@ -26,7 +27,7 @@ export class Client {
 
 
      @OneToMany(() => Appointment, (appointment) => appointment.client)
-     appointment!: Appointment[];
+     appointment?: Appointment[];
 
      
  }

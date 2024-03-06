@@ -21,12 +21,13 @@ export class CreateAppointments1705350282513 implements MigrationInterface {
                 {
                   name: "client_id",
                   type: "int",
+                  isNullable: true,
                   
                 },
                 {
                   name: "artist_id",
                   type: "int",
-                  isNullable: true,
+                  isNullable:true
                 },
                 {
                   name: "date",

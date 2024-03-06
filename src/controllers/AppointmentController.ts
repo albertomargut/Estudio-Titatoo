@@ -10,34 +10,36 @@ export class AppointmentController {
     try {
       const AppointmentRepository = AppDataSource.getRepository(Appointment);
 
-      let { page, skip } = req.query;
+      // let { page, skip } = req.query;
 
-      let currentPage = page ? +page : 1;
-      let itemsPerPage = skip ? +skip : 10;
+      // let currentPage = page ? +page : 1;
+      // let itemsPerPage = skip ? +skip : 10;
 
       const [allAppointments, count] = await AppointmentRepository.findAndCount({
-        skip: (currentPage - 1) * itemsPerPage,
-        take: itemsPerPage,
+        // skip: (currentPage - 1) * itemsPerPage,
+        // take: itemsPerPage,
         relations: {
           client: true,
           artist: true,
+          
         },
         select: {
           //  id: true,
           //  appointment_date: true,
           //  shift: true,
+          id: true,
           date: true,
           time:true,
           client_id: true,
           artist_id: true,
-          id: true,
+          
 
         },
       });
       res.status(200).json({
         count,
-        skip: itemsPerPage,
-        page: currentPage,
+        // skip: itemsPerPage,
+        // page: currentPage,
         results: allAppointments,
       });
     } catch (error) {

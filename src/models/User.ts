@@ -1,7 +1,8 @@
-import { Column, Entity, OneToOne, ManyToMany, JoinTable, PrimaryGeneratedColumn, TableInheritance } from "typeorm"
+import { Column, Entity, OneToOne, OneToMany, ManyToMany, JoinTable, PrimaryGeneratedColumn, TableInheritance } from "typeorm"
 import { Role } from "./Role" 
 import { Client } from "./Client"
 import { Artist } from "./Artist"
+import { Appointment } from "./Appointment";
 
 // -----------------------------------------------------------------------------
 
@@ -47,11 +48,12 @@ export class User {
    
    
    @OneToOne(() => Client, (client) => client.user)
-   client!: Client;
+   client?: Client;
 
   
     @OneToOne(() => Artist, (artist) => artist.user)
-    artist!: Artist;
+    artist?: Artist;
+
  
  }
 
