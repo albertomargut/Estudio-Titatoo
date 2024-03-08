@@ -73,6 +73,8 @@ export class AuthController {
         },
         relations: {
           roles: true,
+          client: true,
+          artist: true
         },
         select: {
           id:true,

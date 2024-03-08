@@ -113,9 +113,19 @@ export class AppointmentController {
     try {
       const id = +req.params.id;
       const appointmentRepository = AppDataSource.getRepository(Appointment);
-      const appointments = await appointmentRepository.findBy({
-        artist_id: id,
-        
+      const appointments = await appointmentRepository.find({
+        where: {
+          artist_id: id,
+        },
+        relations: {
+          client: {
+            user:true
+          },
+          artist: {
+            user:true
+          }
+
+        }
       });
 
       if (!appointments) {
