@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { Appointment } from "../models/Appointment";
 import { AppDataSource } from "../database/data-source";
 import { CreateAppointmentsRequestBody } from "../types/types";
+import { Artist } from "../models/Artist";
 
 //----------------------------------------------------------------------
 
@@ -19,9 +20,12 @@ export class AppointmentController {
         // skip: (currentPage - 1) * itemsPerPage,
         // take: itemsPerPage,
         relations: {
-          client: true,
-          artist: true,
-          
+          client: {
+            user:true
+          },
+          artist: {
+            user:true
+          }
         },
         select: {
           //  id: true,
@@ -71,6 +75,37 @@ export class AppointmentController {
     }
   }
 
+  async getAppointmentByClientId(req: Request, res: Response): Promise<void | Response<any>> {
+    try {
+      const id = +req.params.id;
+      const appointmentRepository = AppDataSource.getRepository(Appointment);
+
+      const [allAppointments, count] = await appointmentRepository.findAndCount({
+       relations: {
+        client: {
+          user:true
+        },
+        artist: {
+          user:true
+        }
+       }, 
+       where: {
+        client_id: id,
+      }
+      })
+
+      res.status(200).json({
+        count,
+        results: allAppointments,
+
+    });
+    } catch (error) {
+      res.status(500).json({
+        message: "Error while getting appointments",
+      });
+    }
+  }
+
   async getByArtist(
     req: Request,
     res: Response
@@ -96,18 +131,51 @@ export class AppointmentController {
       });
     }
   }
+  // async create(
+  //   req: Request<{}, {}, CreateAppointmentsRequestBody>,
+
+  //   res: Response
+  // ): Promise<void | Response<any>> {
+  //   try {
+  //     const data = req.body;
+  //     const appointmentRepository = AppDataSource.getRepository(Appointment);
+  //     const newAppointment = await appointmentRepository.save(data);
+  //     res.status(201).json({
+  //       newAppointment,
+  //       message: "Appointment created successfully"
+  //     });
+  //   } catch (error: any) {
+  //     console.error("Error while creating Appointment:", error);
+  //     res.status(500).json({
+  //       message: "Error while creating Appointment",
+  //       error: error.message,
+  //     });
+  //   }
+  // }
+
   async create(
     req: Request<{}, {}, CreateAppointmentsRequestBody>,
-
     res: Response
   ): Promise<void | Response<any>> {
     try {
       const data = req.body;
       const appointmentRepository = AppDataSource.getRepository(Appointment);
+
+      // Verificar si el artista con el artist_id proporcionado existe en la base de datos
+      const artistRepository = AppDataSource.getRepository(Artist);
+      const artist = await artistRepository.findOne({
+        where: { id: data.artist_id },
+      });
+      if (!artist) {
+        return res
+          .status(400)
+          .json({ message: "El artista especificado no existe." });
+      }
+
       const newAppointment = await appointmentRepository.save(data);
       res.status(201).json({
-        newAppointment,
-        message: "Appointment created successfully"
+        message: "Appointment created successfully",
+        appointment: newAppointment,
       });
     } catch (error: any) {
       console.error("Error while creating Appointment:", error);
@@ -117,6 +185,7 @@ export class AppointmentController {
       });
     }
   }
+
   async update(req: Request, res: Response): Promise<void | Response<any>> {
     try {
       const id = +req.params.id;

@@ -9,7 +9,7 @@ const router = express.Router();
 const appointmentController = new AppointmentController();
 
 router.get("/AllAppointments", auth, appointmentController.getAllAppointments)
-router.get("/myAppointments/:id", auth, isClient, appointmentController.getById)
+router.get("/myAppointments/:id", auth, isClient, appointmentController.getAppointmentByClientId)
 router.get("/myAppointmentsArtists/:id", auth, isArtist, appointmentController.getByArtist)
 router.post("/NewAppointment", auth, isClient, appointmentController.create)
 router.patch("/UpdateAppointment/:id", auth, isClient, appointmentController.update);

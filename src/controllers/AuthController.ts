@@ -75,6 +75,8 @@ export class AuthController {
           roles: true,
         },
         select: {
+          id:true,
+          password_hash:true,
           roles: {
             name: true,
           },
