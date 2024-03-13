@@ -24,18 +24,7 @@ export class CreateClients1705350232840 implements MigrationInterface {
                   isUnique: true,
                 },
                 
-                {
-                  name: "nationality",
-                  type: "varchar",
-                  length: "255",
-                  isNullable: true,
-               },
-               {
-                name: "gender",
-                type: "enum",
-                enum: ["male", "female"],
-                isNullable: true,
-             },
+   
 
               ],
               foreignKeys: [

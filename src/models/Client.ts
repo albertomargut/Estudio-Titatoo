@@ -14,11 +14,7 @@ export class Client {
     @Column()
     user_id!: number;
  
-    @Column()
-    gender?: string;
- 
-    @Column()
-    nationality?: string;
+  
 
    
     @OneToOne(() => User, (user) => user.client)

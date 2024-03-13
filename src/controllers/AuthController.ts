@@ -37,6 +37,7 @@ export class AuthController {
             
             const newClient = clientRepository.create({
               user: newUser,
+              
             });
             await clientRepository.save(newClient);
 
@@ -50,6 +51,7 @@ export class AuthController {
           }
 
     }
+
 
   async login(
     req: Request<{}, {}, LoginUserRequestBody>,
